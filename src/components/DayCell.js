@@ -17,6 +17,7 @@ class DayCell extends Component {
     this.handleKeyEvent = this.handleKeyEvent.bind(this);
     this.renderSelectionPlaceholders = this.renderSelectionPlaceholders.bind(this);
     this.renderPreviewPlaceholder = this.renderPreviewPlaceholder.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleKeyEvent(event) {
@@ -32,6 +33,11 @@ class DayCell extends Component {
         break;
     }
   }
+
+  handleClick() {
+    this.props.onDayClick(this.props.day);
+  }
+
   handleMouseEvent(event) {
     const { day, disabled, onPreviewChange } = this.props;
     const stateChanges = {};
@@ -172,6 +178,7 @@ class DayCell extends Component {
         onMouseUp={this.handleMouseEvent}
         onBlur={this.handleMouseEvent}
         onPauseCapture={this.handleMouseEvent}
+        onClick={this.handleClick}
         onKeyDown={this.handleKeyEvent}
         onKeyUp={this.handleKeyEvent}
         className={this.getClassNames(styles)}
@@ -200,7 +207,7 @@ export const rangeShape = PropTypes.shape({
 });
 
 DayCell.propTypes = {
-  day: PropTypes.object.isRequired,
+  day: PropTypes.object.isonDayClickRequired,
   date: PropTypes.object,
   ranges: PropTypes.arrayOf(rangeShape),
   preview: PropTypes.shape({
@@ -223,6 +230,7 @@ DayCell.propTypes = {
   onMouseDown: PropTypes.func,
   onMouseUp: PropTypes.func,
   onMouseEnter: PropTypes.func,
+  onDayClick: PropTypes.func,
 };
 
 export default DayCell;

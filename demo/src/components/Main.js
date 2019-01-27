@@ -5,9 +5,7 @@ import { format, addDays } from 'date-fns';
 import Section from './Section';
 
 function renderStaticRangeLabel(staticRange) {
-  return (
-    <CustomStaticRangeLabelContent text={'This is a custom label content: '}/>
-  );
+  return <CustomStaticRangeLabelContent text={'This is a custom label content: '} />;
 }
 
 class CustomStaticRangeLabelContent extends React.Component {
@@ -18,14 +16,11 @@ class CustomStaticRangeLabelContent extends React.Component {
       currentDateString: Date(),
     };
 
-    this.intervalId = setInterval(
-      () => {
-        this.setState({
-          currentDateString: Date(),
-        });
-      },
-      1000
-    );
+    this.intervalId = setInterval(() => {
+      this.setState({
+        currentDateString: Date(),
+      });
+    }, 1000);
   }
 
   componentWillUnmount() {
@@ -263,7 +258,7 @@ export default class Main extends Component {
               readOnly
               value={formatDateDisplay(this.state.multipleRanges.selection1.endDate, 'Continuous')}
             />
-            <div className={'newLine'}/>
+            <div className={'newLine'} />
 
             <label className={'label'}>Selection2 Start:</label>
             <input
@@ -277,7 +272,7 @@ export default class Main extends Component {
               readOnly
               value={formatDateDisplay(this.state.multipleRanges.selection2.endDate, 'Continuous')}
             />
-            <div className={'newLine'}/>
+            <div className={'newLine'} />
 
             <label className={'label'}>Selection3 Start:</label>
             <input
@@ -366,23 +361,22 @@ export default class Main extends Component {
           <DefinedRange
             ranges={[this.state.definedRange.selection]}
             renderStaticRangeLabel={renderStaticRangeLabel}
-            staticRanges={[{
-              label: "Hoy",
-              hasCustomRendering: true,
-              range: () => ({
-                startDate: new Date(),
-                endDate: new Date(),
-              }),
-              isSelected() {
-                return (
-                  true
-                );
+            staticRanges={[
+              {
+                label: 'Hoy',
+                hasCustomRendering: true,
+                range: () => ({
+                  startDate: new Date(),
+                  endDate: new Date(),
+                }),
+                isSelected() {
+                  return true;
+                },
               },
-            }]}
+            ]}
             onChange={this.handleRangeChange.bind(this, 'definedRange')}
             className={'centered'}
-          >
-          </DefinedRange>
+          />
         </Section>
         <Section title="RangePicker with disabled dates">
           <div>
@@ -413,18 +407,18 @@ export default class Main extends Component {
           <DefinedRange
             ranges={[this.state.definedRange.selection]}
             renderStaticRangeLabel={renderStaticRangeLabel}
-            staticRanges={[{
-              hasCustomRendering: true,
-              range: () => ({
-                startDate: new Date(),
-                endDate: new Date(),
-              }),
-              isSelected() {
-                return (
-                  true
-                );
+            staticRanges={[
+              {
+                hasCustomRendering: true,
+                range: () => ({
+                  startDate: new Date(),
+                  endDate: new Date(),
+                }),
+                isSelected() {
+                  return true;
+                },
               },
-            }]}
+            ]}
             onChange={this.handleRangeChange.bind(this, 'definedRange')}
             className={'centered'}
           />

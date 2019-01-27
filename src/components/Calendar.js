@@ -24,7 +24,7 @@ import {
   min,
   max,
 } from 'date-fns';
-import defaultLocale from 'date-fns/locale/en-US';
+import defaultLocale from '../locale/pt';
 import coreStyles from '../styles';
 
 class Calendar extends PureComponent {

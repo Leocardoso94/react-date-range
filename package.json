@@ -1,6 +1,6 @@
 {
-  "name": "react-date-range",
-  "version": "1.0.0-beta",
+  "name": "react-date-fork",
+  "version": "0.0.1",
   "description": "A React component for choosing dates and date ranges.",
   "main": "dist/index.js",
   "scripts": {
@@ -8,31 +8,14 @@
     "clear": "rm -rf dist/* & rm -rf demo/dist/*",
     "build": "NODE_ENV=production & yarn build-library & yarn build-demo",
     "build-demo": "webpack -p",
-    "build-library": "babel ./src --out-dir ./dist --ignore test.js & postcss 'src/styles.scss' -d dist --ext css & postcss 'src/theme/*.scss' -d 'dist/theme' --ext css",
+    "build-library":
+      "babel ./src --out-dir ./dist --ignore test.js & postcss 'src/styles.scss' -d dist --ext css & postcss 'src/theme/*.scss' -d 'dist/theme' --ext css",
     "lint": "eslint 'src/**/*.js'",
     "test": "jest",
     "preversion": "yarn clear & yarn build"
   },
-  "keywords": [
-    "react",
-    "date",
-    "range",
-    "datepicker",
-    "rangepicker"
-  ],
-  "contributors": [
-    "Burak Can <neoberg@gmail.com> (https://github.com/burakcan)",
-    "Mehmet Kamil Morcay <mehmetmorcay@gmail.com> (https://github.com/mkg0)",
-    "Engin Semih Basmacı <semih.basmaci@gmail.com> (https://github.com/mortargrind)"
-  ],
+  "keywords": ["react", "date", "range", "datepicker", "rangepicker"],
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "http://github.com/Adphorus/react-date-range"
-  },
-  "bugs": {
-    "url": "http://github.com/Adphorus/react-date-range/issues"
-  },
   "dependencies": {
     "classnames": "^2.2.1",
     "date-fns": "2.0.0-alpha.7",
@@ -78,5 +61,7 @@
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.9.7",
     "webpack-hot-middleware": "^2.21.0"
-  }
+  },
+  "repository": "https://github.com/Leocardoso94/react-date-range.git",
+  "author": "Leonardo Cardoso <leocardosoti@gmail.com>"
 }
