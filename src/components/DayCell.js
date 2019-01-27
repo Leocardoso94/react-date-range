@@ -35,16 +35,18 @@ class DayCell extends Component {
   }
 
   handleClick() {
-    this.props.onDayClick(this.props.day);
+    if (this.props.onDayClick) this.props.onDayClick(this.props.day);
   }
 
   handleMouseEvent(event) {
-    const { day, disabled, onPreviewChange } = this.props;
+    const { day, disabled, onPreviewChange, disabledEvents } = this.props;
     const stateChanges = {};
     if (disabled) {
       onPreviewChange();
       return;
     }
+
+    if (disabledEvents) return;
 
     switch (event.type) {
       case 'mouseenter':
@@ -231,6 +233,7 @@ DayCell.propTypes = {
   onMouseUp: PropTypes.func,
   onMouseEnter: PropTypes.func,
   onDayClick: PropTypes.func,
+  disabledEvents: PropTypes.bool,
 };
 
 export default DayCell;

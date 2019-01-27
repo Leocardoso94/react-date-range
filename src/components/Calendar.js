@@ -161,7 +161,15 @@ class Calendar extends PureComponent {
     }
   }
   renderMonthAndYear(focusedDate, changeShownDate, props) {
-    const { showMonthArrow, locale, minDate, maxDate, showMonthAndYearPickers } = props;
+    const {
+      showMonthArrow,
+      locale,
+      minDate,
+      maxDate,
+      showMonthAndYearPickers,
+      onPrevMonthClick,
+      onNextMonthClick,
+    } = props;
     const upperYearLimit = (maxDate || Calendar.defaultProps.maxDate).getFullYear();
     const lowerYearLimit = (minDate || Calendar.defaultProps.minDate).getFullYear();
     const styles = this.styles;
@@ -171,7 +179,10 @@ class Calendar extends PureComponent {
           <button
             type="button"
             className={classnames(styles.nextPrevButton, styles.prevButton)}
-            onClick={() => changeShownDate(-1, 'monthOffset')}>
+            onClick={() => {
+              changeShownDate(-1, 'monthOffset');
+              if (onPrevMonthClick) onPrevMonthClick();
+            }}>
             <i />
           </button>
         ) : null}
@@ -215,7 +226,10 @@ class Calendar extends PureComponent {
           <button
             type="button"
             className={classnames(styles.nextPrevButton, styles.nextButton)}
-            onClick={() => changeShownDate(+1, 'monthOffset')}>
+            onClick={() => {
+              changeShownDate(+1, 'monthOffset');
+              if (onNextMonthClick) onNextMonthClick();
+            }}>
             <i />
           </button>
         ) : null}

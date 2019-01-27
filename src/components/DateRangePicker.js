@@ -27,9 +27,7 @@ class DateRangePicker extends Component {
             range={this.props.ranges[focusedRange[0]]}
             className={undefined}
           />
-        ) : (
-          ''
-        )}
+        ) : null}
         <DateRange
           onRangeFocusChange={focusedRange => this.setState({ focusedRange })}
           focusedRange={focusedRange}
